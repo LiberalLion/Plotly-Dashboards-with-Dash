@@ -74,11 +74,10 @@ def update_graph(n_clicks, stock_ticker, start_date, end_date):
     for tic in stock_ticker:
         df = web.DataReader(tic,'iex',start,end)
         traces.append({'x':df.index, 'y': df.close, 'name':tic})
-    fig = {
+    return {
         'data': traces,
-        'layout': {'title':', '.join(stock_ticker)+' Closing Prices'}
+        'layout': {'title': ', '.join(stock_ticker) + ' Closing Prices'},
     }
-    return fig
 
 if __name__ == '__main__':
     app.run_server()

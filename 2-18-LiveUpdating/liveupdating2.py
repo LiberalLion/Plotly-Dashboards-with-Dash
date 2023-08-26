@@ -36,10 +36,10 @@ def update_layout(n):
     # A fake header is necessary to access the site:
     res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
     data = res.json()
-    counter = 0
-    for element in data["stats"]["total"]:
-        counter += data["stats"]["total"][element]
-    return 'Active flights worldwide: {}'.format(counter)
+    counter = sum(
+        data["stats"]["total"][element] for element in data["stats"]["total"]
+    )
+    return f'Active flights worldwide: {counter}'
 
 if __name__ == '__main__':
     app.run_server()

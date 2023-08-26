@@ -17,7 +17,7 @@ days = ['TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY','MONDAY']
 # Use a for loop (or list comprehension to create traces for the data list)
 data = []
 
-for day in days:
+for _ in days:
     # What should go inside this Scatter call?
     trace = go.Scatter()
     data.append(trace)

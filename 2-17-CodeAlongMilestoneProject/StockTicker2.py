@@ -34,13 +34,10 @@ app.layout = html.Div([
     Output('my_graph', 'figure'),
     [Input('my_ticker_symbol', 'value')])
 def update_graph(stock_ticker):
-    fig = {
-        'data': [
-            {'x': [1,2], 'y': [3,1]}
-        ],
-        'layout': {'title':stock_ticker}
+    return {
+        'data': [{'x': [1, 2], 'y': [3, 1]}],
+        'layout': {'title': stock_ticker},
     }
-    return fig
 
 if __name__ == '__main__':
     app.run_server()

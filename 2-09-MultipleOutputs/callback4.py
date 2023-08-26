@@ -33,13 +33,13 @@ app.layout = html.Div([
     Output('wheels-output', 'children'),
     [Input('wheels', 'value')])
 def callback_a(wheels_value):
-    return 'You\'ve selected "{}"'.format(wheels_value)
+    return f"""You\'ve selected "{wheels_value}\""""
 
 @app.callback(
     Output('colors-output', 'children'),
     [Input('colors', 'value')])
 def callback_b(colors_value):
-    return 'You\'ve selected "{}"'.format(colors_value)
+    return f"""You\'ve selected "{colors_value}\""""
 
 if __name__ == '__main__':
     app.run_server()

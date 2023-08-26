@@ -39,13 +39,10 @@ def update_graph(stock_ticker):
     start = datetime(2017, 1, 1)
     end = datetime(2017, 12, 31)
     df = web.DataReader(stock_ticker,'iex',start,end)
-    fig = {
-        'data': [
-            {'x': df.index, 'y': df.close}
-        ],
-        'layout': {'title':stock_ticker}
+    return {
+        'data': [{'x': df.index, 'y': df.close}],
+        'layout': {'title': stock_ticker},
     }
-    return fig
 
 if __name__ == '__main__':
     app.run_server()

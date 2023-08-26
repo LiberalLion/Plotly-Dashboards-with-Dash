@@ -15,7 +15,7 @@ df = pd.read_csv('../data/wheels.csv')
 
 def encode_image(image_file):
     encoded = base64.b64encode(open(image_file, 'rb').read())
-    return 'data:image/png;base64,{}'.format(encoded.decode())
+    return f'data:image/png;base64,{encoded.decode()}'
 
 app.layout = html.Div([
     dcc.RadioItems(
@@ -39,13 +39,13 @@ app.layout = html.Div([
     Output('wheels-output', 'children'),
     [Input('wheels', 'value')])
 def callback_a(wheels_value):
-    return 'You\'ve selected "{}"'.format(wheels_value)
+    return f"""You\'ve selected "{wheels_value}\""""
 
 @app.callback(
     Output('colors-output', 'children'),
     [Input('colors', 'value')])
 def callback_b(colors_value):
-    return 'You\'ve selected "{}"'.format(colors_value)
+    return f"""You\'ve selected "{colors_value}\""""
 
 @app.callback(
     Output('display-image', 'src'),

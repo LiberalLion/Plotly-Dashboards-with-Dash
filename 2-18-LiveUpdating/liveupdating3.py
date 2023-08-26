@@ -40,22 +40,24 @@ def update_layout(n):
     # A fake header is necessary to access the site:
     res = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
     data = res.json()
-    counter = 0
-    for element in data["stats"]["total"]:
-        counter += data["stats"]["total"][element]
+    counter = sum(
+        data["stats"]["total"][element] for element in data["stats"]["total"]
+    )
     counter_list.append(counter)
-    return 'Active flights worldwide: {}'.format(counter)
+    return f'Active flights worldwide: {counter}'
 
 @app.callback(Output('live-update-graph','figure'),
               [Input('interval-component', 'n_intervals')])
 def update_graph(n):
-    fig = go.Figure(
-        data = [go.Scatter(
-        x = list(range(len(counter_list))),
-        y = counter_list,
-        mode='lines+markers'
-        )])
-    return fig
+    return go.Figure(
+        data=[
+            go.Scatter(
+                x=list(range(len(counter_list))),
+                y=counter_list,
+                mode='lines+markers',
+            )
+        ]
+    )
 
 if __name__ == '__main__':
     app.run_server()

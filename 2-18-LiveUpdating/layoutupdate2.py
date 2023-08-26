@@ -20,7 +20,7 @@ app.layout = html.Div([
 @app.callback(Output('live-update-text', 'children'),
               [Input('interval-component', 'n_intervals')])
 def update_layout(n):
-    return 'Crash free for {} refreshes'.format(n)
+    return f'Crash free for {n} refreshes'
 
 if __name__ == '__main__':
     app.run_server()
